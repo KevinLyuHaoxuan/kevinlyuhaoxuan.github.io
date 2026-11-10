@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta name="robots" content="noindex"/><meta name="referrer" content="same-origin"/><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="dark" name="color-scheme"/><meta content="Haoxuan Lyu’s interactive data science portfolio. Explore the evidence, methods, and design decisions behind each project." name="description"/><title>Data science. Made tangible. · Haoxuan Lyu</title><link href="portfolio-ui.css?v=13" rel="stylesheet"/><link href="portfolio-pages.css" rel="stylesheet"/><link href="portfolio-refined.css" rel="stylesheet"/><link rel="stylesheet" href="portfolio-controls.css?v=7"/></head><body class="home-page" id="top"><a class="skip" href="#main">Skip to content</a><header><div class="wrap"><a class="brand" href="portfolio-dark.html"><span aria-hidden="true" class="mark">HL</span>Haoxuan Lyu</a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a></nav></div></header><main class="wrap" id="main">
+<section aria-labelledby="home-title" class="home-hero">
+<div aria-hidden="true" class="home-orb"></div>
+<p class="eyebrow">Haoxuan Lyu / UIUC</p>
+<h1 data-split="" id="home-title"><span class="hero-line">Data science.</span><span class="hero-line gradient-text">Made tangible.</span></h1>
+<div class="hero-bottom"><p class="lead">Information Science <span class="degree-plus">+</span> Data Science.<br/>Data, models, and human experiences.</p>
+<div class="hero-index"><a href="walmart-case.html"><b>01</b> ANALYZE ↗</a><a href="fraud-case.html"><b>02</b> EVALUATE ↗</a><a href="dategpt-case.html"><b>03</b> UNDERSTAND ↗</a></div></div>
+</section>
+<section aria-label="Selected projects" class="bento" id="work">
+<article data-project-theme="walmart" class="project-card walmart-card" data-glow="" data-reveal="">
+<div class="project-heading"><div><p class="eyebrow">01 / Applied analytics</p><h2 data-letterplay="" id="walmart-title">Walmart<br/><span class="card-subtitle">Weekly Report</span></h2><p>Sales. Stock. The bigger picture.</p></div><a aria-label="Explore Walmart Weekly Reporting" class="round-link" href="walmart-case.html">↗</a></div>
+<div class="mini-dashboard"><div class="mini-head"><span class="mini-title">Retail performance / <span id="mini-scope">Overall</span></span><div aria-label="Homepage preview department" class="seg" role="group"><button aria-pressed="true" data-mini="overall" type="button">Overall</button><button aria-pressed="false" data-mini="D14" type="button">D14</button><button aria-pressed="false" data-mini="D20" type="button">D20</button></div></div>
+<div aria-live="polite" class="mini-stats"><div><strong id="mini-sales">1,642</strong><span>Actual POS / units</span></div><div><strong id="mini-forecast">1,670</strong><span>Prior forecast / units</span></div><div><strong id="mini-stock">3,231</strong><span>Ending stock / units</span></div></div>
+<svg aria-label="Synthetic weekly sales and forecast preview" id="mini-chart" role="img" viewbox="0 0 590 130"></svg>
+<div class="mini-legend"><span>Actual POS</span><span style="--dot:#96d4e8">Prior forecast</span><span style="--dot:#88d5b7">Ending stock</span></div></div>
+<div class="project-bottom"><div class="tag-list"><span class="tag">Python / pandas</span><span class="tag">12 demo weeks</span><span class="tag">SKU drilldown</span></div><a class="button primary" href="walmart-case.html">View project <span aria-hidden="true" class="arrow">↗</span></a></div><p class="home-note">Synthetic retail data</p>
+</article>
+<div class="rail">
+<article data-project-theme="fraud" class="project-card small-project" data-glow="" data-reveal="" style="--delay:90ms"><div><p class="eyebrow">02 / Machine learning</p><h2 data-letterplay="" id="fraud-title">Credit Card<br/>Fraud Detection</h2><p class="description">A threshold changes everything.</p><a class="button" href="fraud-case.html">View project <span aria-hidden="true" class="arrow">↗</span></a></div><div aria-hidden="true" class="card-symbol fraud-symbol">⌁</div></article>
+<article data-project-theme="dategpt" class="project-card small-project dategpt-card" data-glow="" data-reveal="" style="--delay:180ms"><div><p class="eyebrow">03 / Human–AI interaction</p><h2 data-letterplay="" id="dategpt-title">DateGPT</h2><p class="description">A little more personal.</p><a class="button" href="dategpt-case.html">View project <span aria-hidden="true" class="arrow">↗</span></a></div><div aria-hidden="true" class="card-symbol date-symbol">✳</div></article>
+</div>
+</section>
+<section class="section about-grid" data-reveal="" id="about"><div><p class="eyebrow">About</p><h2>Curiosity.<br/><em class="editorial">Made useful.</em></h2></div><div class="reading"><p>I study Information Science + Data Science at UIUC. I explore how data, models, and interfaces help people make decisions.</p><div class="discipline-list"><span>Analytics</span><span>Machine learning</span><span>Human–AI interaction</span></div></div></section>
+</main><footer class="wrap"><span>Haoxuan Lyu · Selected work</span><a href="portfolio-dark.html#work">All projects ↗</a></footer><script>"use strict";
+const departments = {
+  overall: "Overall",
+  D14: "D14 · Kitchen & Dining",
+  D20: "D20 · Bath & Shower"
+};
+const products = [
+  {id:"D14-101", name:"Stoneware Dinner Set", base:133, stock:324},
+  {id:"D14-102", name:"Bamboo Utensil Set", base:99, stock:245},
+  {id:"D14-103", name:"Glass Storage Set", base:115, stock:355},
+  {id:"D14-104", name:"Cotton Dish Towels", base:147, stock:295},
+  {id:"D14-105", name:"Silicone Baking Mat", base:77, stock:192},
+  {id:"D14-106", name:"Stackable Pantry Bins", base:120, stock:310},
+  {id:"D20-201", name:"Textured Bath Mat", base:119, stock:370},
+  {id:"D20-202", name:"Everyday Bath Towel", base:167, stock:360},
+  {id:"D20-203", name:"Waffle Shower Curtain", base:95, stock:245},
+  {id:"D20-204", name:"Shower Caddy", base:81, stock:220},
+  {id:"D20-205", name:"Cotton Washcloth Set", base:139, stock:268},
+  {id:"D20-206", name:"Bamboo Bath Tray", base:66, stock:210}
+].map(product => ({...product, department:product.id.slice(0,3)}));
+const weekCount = 12;
+const factors = [.78,.83,.75,.91,.9,.97,.88,.99,1.03,1.15,1.11,1.21];
+const dataset = products.flatMap((product,index) => factors.map((factor,offset) => {
+  const week = offset + 1;
+  const productWave = Math.sin((offset + index * 1.1) * .82);
+  const actual = Math.round(product.base * (factor + productWave * .085));
+  const forecast = Math.round(product.base * (factor + Math.cos((offset - 1 + index) * .76) * .075 - .015));
+  const stock = Math.round(product.stock * (1.12 - offset * .021 + Math.cos(offset * .85 + index) * .16));
+  const row = {product,week,runWeek:week-1,actual,forecast,stock};
+  if (product.id === "D14-104" && week === 10) Object.assign(row,{actual:219,forecast:155,stock:34});
+  if (product.id === "D20-201" && week === 12) Object.assign(row,{actual:79,forecast:138,stock:412});
+  if (product.id === "D20-203" && week === 9) Object.assign(row,{forecast:null,runWeek:null});
+  return row;
+}));
+
+const previewData=Object.fromEntries(['overall','D14','D20'].map(scope=>[scope,Object.fromEntries([['a','actual'],['f','forecast'],['s','stock']].map(([k,field])=>[k,Array.from({length:12},(_,i)=>dataset.filter(r=>r.week===i+1&&(scope==='overall'||r.product.department===scope)).reduce((sum,r)=>sum+(r[field]??0),0))]))]));function mini(scope){const d=previewData[scope],svg=document.getElementById('mini-chart');document.getElementById('mini-scope').textContent=scope==='overall'?'Overall':scope;for(const [id,k] of [['sales','a'],['forecast','f'],['stock','s']])document.getElementById('mini-'+id).textContent=d[k][11].toLocaleString('en-US');let m='<defs><linearGradient id="mini-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bda4f5" stop-opacity=".25"/><stop offset="1" stop-color="#bda4f5" stop-opacity="0"/></linearGradient></defs><path d="M0 22H590M0 51H590M0 80H590M0 107H590" stroke="#ffffff10" fill="none"/>';const lo=Math.min(...d.a,...d.f)*.85,hi=Math.max(...d.a,...d.f)*1.06;const path=(k,stock=false)=>d[k].map((v,i)=>(i?'L':'M')+(i*53.3).toFixed(1)+' '+(stock?96+(1-v/Math.max(...d.s))*60:80-(v-lo)/(hi-lo)*68).toFixed(1)).join(' ');m+='<path d="'+path('a')+'L586 87H0Z" fill="url(#mini-fill)"/><path d="'+path('a')+'" fill="none" stroke="#c9afff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="'+path('f')+'" fill="none" stroke="#96d4e8" stroke-width="2" stroke-dasharray="5 5"/><path d="'+path('s',true)+'" fill="none" stroke="#88d5b7" stroke-width="2"/><text x="0" y="128" font-size="8" fill="#82758f">W01</text><text x="586" y="128" text-anchor="end" font-size="8" fill="#82758f">W12</text>';svg.innerHTML=m;document.querySelectorAll('[data-mini]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mini===scope)))}document.querySelectorAll('[data-mini]').forEach(b=>b.onclick=()=>mini(b.dataset.mini));mini('overall');</script><script src="portfolio-ui.js?v=10"></script><script src="portfolio-effects.js?v=7"></script><script src="portfolio-controls.js?v=7"></script></body></html>

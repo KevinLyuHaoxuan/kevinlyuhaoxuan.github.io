@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta name="robots" content="noindex"/><meta name="referrer" content="same-origin"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="Explore a synthetic recreation of Haoxuan Lyu’s Walmart reporting workflow, from department trends to individual products." name="description"/>
+<title>Walmart Weekly Reporting · Haoxuan Lyu</title>
+<style>:root{color-scheme:dark;--bg:#0a0b10;--card:#12131c;--deep:#0f1018;--text:#f7f6ff;--muted:#a9a9bd;--line:#ffffff18;--violet:#c4b0ff;--forecast:#8bcfe9;--stock:#84d9bc;--max:1216px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:91px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,figure{margin:0} a{color:inherit;text-decoration:none} button,input,select{font:inherit} button{cursor:pointer}
+:focus-visible{outline:2px solid #c7b6ff;outline-offset:4px}
+[hidden]{display:none!important}
+.wrap{width:min(var(--max),calc(100% - 76px));margin-inline:auto}
+.skip{position:fixed;top:10px;left:10px;z-index:20;transform:translateY(-170%);clip-path:inset(50%);background:#2b2546;padding:10px 14px;border-radius:10px}
+.skip:focus{transform:none;clip-path:none}
+header{position:sticky;top:0;z-index:5;background:#0a0b10e8;backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+header .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-size:14px;font-weight:720}
+.mark{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#160f29;background:linear-gradient(145deg,#bdaaff,#8166de);font-size:11px;font-weight:850}
+nav{display:flex;align-items:center;gap:24px;color:#c2c1d2;font-size:13px}
+nav a:hover,.quiet:hover{color:var(--violet)}
+.overline{color:#bfb0f6;font-size:10px;font-weight:770;letter-spacing:.155em;text-transform:uppercase}
+.hero{position:relative;padding:51px 0 31px;display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:26px;align-items:end}
+.hero h1{max-width:780px;margin:9px 0 12px;font-size:clamp(42px,6.2vw,88px);line-height:.96;letter-spacing:-.062em;word-spacing:.035em}
+.hero h1 span{color:#c4b0ff;background:linear-gradient(105deg,#e9e1ff,#aa8fff);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p:not(.overline){color:#bdbbd0;max-width:655px;font-size:17px;line-height:1.52}
+.hero-meta{display:grid;gap:9px;margin:0;padding:0 0 2px}
+.hero-meta div{display:flex;gap:13px;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;font-size:12px}
+.hero-meta dt{color:#aaa9bf}.hero-meta dd{margin:0;text-align:right;color:#e6e3f3;font-weight:620}
+.explorer{position:relative;isolation:isolate;border:1px solid #8975c945;border-radius:26px;padding:21px;background:radial-gradient(ellipse at 95% 0%,#30224e 0%,transparent 44%),linear-gradient(150deg,#1a172b,#13141e 56%);box-shadow:0 24px 60px #0004}
+.topline,.panel-head,.filters,.filters-end,.subhead,.legend,.week-controls,.eyewrap{display:flex;align-items:center;gap:10px}
+.topline,.panel-head,.filters,.subhead{justify-content:space-between}
+.topline{padding:2px 2px 16px}
+.topline h2{font-size:26px;letter-spacing:-.04em;margin-top:4px}
+.badge{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;padding:6px 9px;border:1px solid #bba1ff52;border-radius:99px;background:#2b2344;color:#ebe1ff;font-size:10px;font-weight:710}
+.badge::before{content:"";width:5px;height:5px;border-radius:50%;background:#c6afff}
+.filters{gap:14px;flex-wrap:wrap;background:#11111bd9;padding:9px 10px;border:1px solid var(--line);border-radius:12px}
+.filters-end{flex-wrap:wrap}
+.seg{display:inline-flex;align-items:center;gap:3px;max-width:100%;padding:3px;border-radius:9px;background:#1a1927;border:1px solid #ffffff0c}
+.seg button{border:1px solid transparent;border-radius:6px;background:transparent;color:#c9c6db;padding:7px 11px;min-height:34px;font-size:12px;font-weight:670;white-space:nowrap}
+.seg button:hover{background:#302940}
+.seg button[aria-pressed=true]{border-color:#ad91f34d;background:#413364;color:#fff}
+.seg small{margin-left:4px;font-size:10px;font-weight:500;color:#d6cde9}
+label.field{display:flex;align-items:center;gap:7px;font-size:11px;color:#c3bed7;font-weight:680}
+input[type=search],select{min-height:35px;border-radius:7px;border:1px solid #ffffff22;padding:6px 9px;color:#eeebfa;background:#1b1a29;font-size:12px}
+select{max-width:100%}
+#item{width:min(188px,50vw)}
+#scope-trail{margin:10px 2px 11px;color:#c6bbdd;font-size:11px;font-weight:620;line-height:1.5}
+.grid{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(0,1fr);gap:12px}
+.plot,.side,.products{min-width:0;background:#11121bed;border:1px solid var(--line);border-radius:14px}
+.plot,.side{padding:14px}
+.panel-head{align-items:flex-start}
+.panel-head h3{font-size:17px;letter-spacing:-.024em}
+.panel-head p{font-size:11px;color:#b5b1c7;line-height:1.4;margin-top:4px}
+.legend{justify-content:flex-end;flex-wrap:wrap;font-size:10px;color:#d6d2e5;gap:5px 10px}
+.legend span{white-space:nowrap}
+.swatch{display:inline-block;width:14px;height:0;margin-right:4px;border-top:2px solid var(--violet);vertical-align:middle}
+.swatch.forecast{border-top:2px dashed var(--forecast)} .swatch.stock{border-color:var(--stock)}
+figure{margin-top:10px}
+.chart-svg{display:block;width:100%;overflow:visible}
+.chart-svg text{fill:#b9b3ca;font:10px -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+.chart-svg .gridline{stroke:#ffffff12}.chart-svg .cursor{stroke:#d7c8ff78;stroke-dasharray:4 4}
+.chart-svg .actual,.chart-svg .forecast,.chart-svg .stock{fill:none;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart-svg .actual{stroke:var(--violet)} .chart-svg .forecast{stroke:var(--forecast);stroke-dasharray:5 4} .chart-svg .stock{stroke:var(--stock)}
+.inventory{border-top:1px solid var(--line);padding-top:9px;margin-top:7px}
+.week-controls{gap:8px;margin-top:5px;font-size:11px;color:#c3bed5}
+.week-controls button{width:30px;height:28px;flex:none;border:1px solid var(--line);border-radius:7px;background:#201c30;color:#eee8ff;font-size:14px}
+.week-controls button:disabled{opacity:.36;cursor:default}
+.week-controls input{accent-color:#b69df8;min-width:50px;flex:1;margin:0 2px;cursor:pointer}
+.week-controls output{min-width:55px;text-align:right;color:#f1e9ff;font-weight:740}
+.side{display:flex;flex-direction:column;gap:11px}
+.side .eyewrap{justify-content:space-between;gap:5px}
+.week-label{color:#eae2ff;font-size:12px;font-weight:760}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.metric{background:#1b1a2a;border:1px solid #ffffff0e;border-radius:8px;padding:8px 9px}
+.metric span{display:block;color:#bdb7d2;font-size:10px;line-height:1.22}
+.metric strong{display:block;margin-top:3px;font-size:clamp(16px,2.05vw,24px);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.context{display:grid;grid-template-columns:1fr auto;gap:5px 8px;margin:0;font-size:11px;color:#bbb5d0}
+.context dd{margin:0;text-align:right;color:#eee6ff;font-weight:650}
+.read{padding:10px 11px;border:1px solid #a687e747;border-radius:9px;background:#271f38}
+.read h3{margin-bottom:4px;color:#eee5ff;font-size:13px;line-height:1.3}
+.read p{color:#cfc4e1;font-size:11px;line-height:1.45}
+.examples{margin-top:auto;display:flex;flex-wrap:wrap;column-gap:14px;row-gap:6px}
+.quiet{border:0;background:none;color:#dfd2ff;font-size:12px;font-weight:700;padding:1px 0;text-align:left}
+.products{margin-top:12px;padding:13px 14px 5px}
+.products .subhead{align-items:flex-end;flex-wrap:wrap}
+.products h3{font-size:17px;letter-spacing:-.024em}
+.products .subhead p{color:#aaa5be;font-size:11px;margin-top:5px;line-height:1.4}
+.table-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+#search{width:162px;max-width:100%}
+.table-wrap{overflow:auto;margin-top:9px;border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid #ffffff0f;white-space:nowrap;font-size:12px}
+th{color:#b1abc7;font-size:10px;font-weight:700}
+td{color:#ded9ee}
+th:first-child,td:first-child{text-align:left;padding-left:2px}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#1b1827}
+tbody tr.is-selected{background:#261d3d}
+.product{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:#ece4ff;padding:4px 0;font-size:12px;font-weight:720;text-align:left}
+.product:hover{text-decoration:underline}
+.product small{font-size:9px;color:#aba1c7;font-weight:560}
+.plus{color:#adedd6}.minus{color:#f2b5cf}
+.empty{text-align:center!important;color:#c8bdd9}
+.data-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 2px 1px;color:#c1b8d4;font-size:11px;line-height:1.45}
+.case-notes{display:grid;grid-template-columns:.95fr 1.3fr;gap:22px;margin:40px 0 45px}
+.note{background:#13141d;border:1px solid var(--line);border-radius:16px;padding:22px}
+.note h2{font-size:clamp(23px,3vw,37px);letter-spacing:-.048em;margin:6px 0 11px}
+.note p,.note li{color:#c1bfd1;font-size:13px;line-height:1.58}
+.note p+p{margin-top:10px}
+.note ul{margin:0;padding-left:17px}
+.note li+li{margin-top:8px}
+details{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+summary{color:#e9e3fa;font-size:13px;font-weight:700;cursor:pointer}
+details p{margin-top:8px}
+footer{display:flex;justify-content:space-between;gap:15px;padding:16px 0 24px;border-top:1px solid var(--line);font-size:12px;color:#ada9c0}
+@media(max-width:1020px){.wrap{width:calc(100% - 46px)}.hero{grid-template-columns:1fr 235px}.seg small{display:none}}
+@media(max-width:760px){
+  .wrap{width:calc(100% - 30px)} header .wrap{height:56px} nav{gap:13px;font-size:12px}
+  .hero{display:block;padding:30px 0 22px}.hero h1{font-size:clamp(42px,9.2vw,66px)}.hero p:not(.overline){font-size:15px}.hero-meta{display:none}
+  .explorer{padding:12px;border-radius:18px}.topline{padding:1px 0 11px}.topline h2{font-size:20px}
+  .filters{gap:8px;padding:7px}.seg button{padding-inline:7px}.grid,.case-notes{grid-template-columns:1fr}
+  .plot,.side,.products{padding:10px}.side{gap:10px}.case-notes{gap:12px;margin:25px 0}.note{padding:17px}
+}
+@media(max-width:365px){.brand{font-size:12px;gap:6px}.mark{width:25px;height:25px}nav{gap:8px;font-size:11px}.topline{align-items:flex-start}.badge{font-size:9px;padding:5px 6px}.panel-head{flex-wrap:wrap}.data-foot{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style><link href="portfolio-ui.css?v=13" rel="stylesheet"/><link href="portfolio-pages.css" rel="stylesheet"/>
+<link href="portfolio-refined.css" rel="stylesheet"/><link href="walmart-complete.css?v=14" rel="stylesheet"/><link rel="stylesheet" href="portfolio-controls.css?v=7"/><link rel="stylesheet" href="walmart-motion.css?v=11"/></head>
+<body class="walmart-page" id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap">
+<a class="brand" href="portfolio-dark.html"><span aria-hidden="true" class="mark">HL</span>Haoxuan Lyu</a>
+<nav aria-label="Main navigation"><a href="portfolio-dark.html#work">Work</a><a href="#explorer">Explorer</a></nav>
+</div></header>
+<main class="wrap" id="main">
+<section aria-labelledby="title" class="hero">
+<div>
+<p class="overline">01 / Retail analytics</p>
+<h1 data-split="" id="title"><span class="title-primary">Walmart</span><span class="title-secondary">Weekly Report.</span></h1>
+<p>Sales, forecasts, and stock. Connected.</p>
+</div>
+<dl class="hero-meta">
+<div><dt>Context</dt><dd>Mainstream International</dd></div>
+<div><dt>Role</dt><dd>Business Analyst Intern</dd></div>
+<div><dt>Original workflow</dt><dd>Python · pandas · HTML</dd></div>
+</dl>
+</section>
+<nav class="case-subnav" aria-label="Case sections"><a href="#overview">01 · Overview</a><a href="#explorer">02 · Explore</a></nav>
+<section class="wm-overview" id="overview" aria-labelledby="overview-title"></section>
+<section aria-labelledby="explorer-title" class="explorer" id="explorer">
+<div class="topline">
+<div><p class="overline">02 / Explore</p><h2 id="explorer-title">Every week. Every product.</h2></div>
+<span class="badge">Synthetic data</span>
+</div>
+<div class="filters">
+<div aria-label="Report scope" class="seg" role="group">
+<button aria-pressed="true" data-scope="overall" type="button">Overall</button>
+<button aria-label="D14 Kitchen and Dining" aria-pressed="false" data-scope="D14" type="button">D14<small>Kitchen &amp; Dining</small></button>
+<button aria-label="D20 Bath and Shower" aria-pressed="false" data-scope="D20" type="button">D20<small>Bath &amp; Shower</small></button>
+</div>
+<div class="filters-end">
+<label class="field">Product <select id="item"><option value="">All products</option></select></label>
+<div aria-label="Chart time window" class="seg" role="group">
+<button aria-pressed="false" data-range="4" type="button">4W</button>
+<button aria-pressed="false" data-range="8" type="button">8W</button>
+<button aria-pressed="true" data-range="12" type="button">12W</button>
+</div>
+</div>
+</div>
+<div class="button-row" style="margin-top:15px"><button aria-pressed="false" class="quiet" id="play-weeks" type="button">Play weeks ▷</button><button class="quiet" id="reset-view" type="button">Reset view ↺</button></div><p aria-live="polite" id="scope-trail">Overall · All products</p>
+<div class="wm-time"><div class="week-controls">
+<button aria-label="Previous week" id="prev-week" type="button">‹</button>
+<label for="week">Review week</label>
+<input id="week" data-discrete-step="1" max="12" min="1" step="0.001" type="range" value="12"/>
+<output for="week" id="week-value">W12</output>
+<button aria-label="Next week" id="next-week" type="button">›</button>
+</div><span class="wm-context" id="wm-context"></span></div>
+<div class="wm-tabs" role="tablist" aria-label="Analysis module"><button type="button" role="tab" id="tab-sales" aria-controls="panel-sales" aria-selected="true" tabindex="0" data-module="sales">Sales</button><button type="button" role="tab" id="tab-supply" aria-controls="panel-supply" aria-selected="false" tabindex="-1" data-module="supply">Supply</button><button type="button" role="tab" id="tab-forecast" aria-controls="panel-forecast" aria-selected="false" tabindex="-1" data-module="forecast">Forecast</button><button type="button" role="tab" id="tab-operations" aria-controls="panel-operations" aria-selected="false" tabindex="-1" data-module="operations">Operations</button></div>
+<div role="tabpanel" aria-labelledby="tab-sales" id="panel-sales" class="wm-panel"></div>
+<div role="tabpanel" aria-labelledby="tab-supply" id="panel-supply" class="wm-panel" hidden></div>
+<div role="tabpanel" aria-labelledby="tab-forecast" id="panel-forecast" class="wm-panel" hidden><div class="grid">
+<section aria-labelledby="sales-title" class="plot" id="charts">
+<div class="panel-head">
+<div><h3 id="sales-title">Actual vs. forecast</h3><p>Matched products · units</p></div>
+<div aria-label="Chart legend" class="legend"><span><i class="swatch"></i>Matched POS</span><span><i class="swatch forecast"></i>Prior forecast</span></div>
+</div>
+<figure><svg aria-label="Actual sales and forecasts. Use the week control below to inspect values." class="chart-svg" id="sales-chart" role="img"></svg></figure>
+<div class="panel-head inventory">
+<div><h3>Ending store inventory</h3><p>End-of-week units</p></div>
+<div class="legend"><span><i class="swatch stock"></i>Ending units</span></div>
+</div>
+<figure><svg aria-label="Ending inventory over time. Use the week control below to inspect values." class="chart-svg" id="stock-chart" role="img"></svg></figure>
+
+</section>
+<aside aria-label="Selected week summary" class="side">
+<div class="eyewrap"><p class="overline">Week snapshot</p><span class="week-label" id="week-title">W12</span></div>
+<div class="metrics">
+<div class="metric"><span>Total POS units</span><strong id="pos">—</strong></div>
+<div class="metric"><span>Prior forecast units</span><strong id="forecast">—</strong></div>
+<div class="metric"><span>Ending stock units</span><strong id="stock">—</strong></div>
+<div class="metric"><span>Matched POS − forecast</span><strong id="gap">—</strong></div>
+</div>
+<dl class="context">
+<dt>Matched POS units</dt><dd id="matched-pos">—</dd>
+<dt>POS / forecast</dt><dd id="attainment">—</dd>
+<dt>Forecast coverage</dt><dd id="coverage">—</dd>
+<dt>Forecast run → target</dt><dd id="run">—</dd>
+<dt>Ending stock / weekly POS</dt><dd id="stock-ratio">—</dd>
+</dl>
+<div class="read"><h3 id="read-title">Weekly reading</h3><p id="read-copy"></p></div>
+
+</aside>
+</div>
+<section class="section" id="diagnostics">
+<div class="section-title" data-reveal=""><div><p class="overline">Error, in focus</p><h2>The gap beneath the total.</h2></div></div>
+<div class="diagnostic-grid"><div class="surface" data-glow="" data-reveal=""><p class="overline" id="diagnostic-scope">Overall / 12 weeks</p><div aria-live="polite" class="diagnostic-stats"><div class="diagnostic-stat"><strong id="wape">—</strong><span>Weighted absolute percentage error</span></div><div class="diagnostic-stat"><strong id="net-gap">—</strong><span>Net gap / matched actual units</span></div></div><p id="diagnostic-reading"></p><div class="formula">WAPE = total absolute error ÷ matched sales</div></div>
+<div class="surface" data-glow="" data-reveal=""><p class="overline">Where the error comes from</p><h3 style="margin-top:10px">Where the error lives</h3><div aria-live="polite" class="bar-stack" id="error-contributors"></div><p class="micro" id="matched-caption" style="margin-top:22px"></p></div></div>
+</section>
+<section class="section" id="planning" style="padding-top:0"><div class="section-title" data-reveal=""><div><p class="overline">What if</p><h2>A different next week.</h2></div></div>
+<div class="surface" data-glow="" data-reveal=""><div class="topline" style="padding:0"><div><h3>Inventory, reimagined.</h3><p class="micro" id="planning-context" style="margin-top:8px"></p></div><span class="pill">Scenario</span></div><div class="scenario-calc"><div><label class="slider-field" for="demand-change"><span class="slider-label">Demand vs. selected week <output id="demand-change-label">+0%</output></span><input id="demand-change" max="100" min="-50" step="0.1" type="range" value="0"/></label><label class="slider-field" for="inbound-units" style="margin-top:26px"><span class="slider-label">Assumed inbound stock <output id="inbound-label">0 units</output></span><input id="inbound-units" max="3000" min="0" step="1" type="range" value="0"/></label><button class="button" id="reset-planning" style="margin-top:24px" type="button">Reset assumptions ↺</button></div><div aria-live="polite" class="scenario-result"><p class="overline" id="planning-outcome">Projected ending stock</p><div class="big-stat" id="planned-stock">—</div><h3 id="planned-demand">—</h3><p id="planning-copy"></p></div></div><details><summary>Assumptions</summary><p>Ending stock + inbound − scenario demand. Inbound arrives before sales; no lead times or safety stock. Products cannot substitute for one another.</p></details></div>
+</section>
+</div>
+<div role="tabpanel" aria-labelledby="tab-operations" id="panel-operations" class="wm-panel" hidden></div>
+<section aria-labelledby="products-title" class="products" data-view="table" id="product-pulse">
+<div class="subhead">
+<div><h3 id="products-title">The product pulse.</h3><p id="products-caption">A closer look, one product at a time.</p></div>
+<div class="wm-product-toolbar"><div class="table-controls">
+<input aria-label="Search products" id="search" placeholder="Search product or ID" type="search"/>
+<label class="field">Sort by <select id="sort">
+<option value="pos">POS units</option>
+<option value="gap">Largest gap</option>
+<option value="stock">Lowest stock</option>
+</select></label>
+</div>
+<div aria-label="Product view" class="seg view-switch" role="group"><button aria-pressed="true" data-product-view="table" type="button">☷ Table</button><button aria-pressed="false" data-product-view="cards" type="button">⊞ Cards</button></div></div></div>
+<div aria-label="Product comparison table" class="table-wrap" role="region" tabindex="0">
+<table>
+<thead><tr><th>Product</th><th>12-week pulse</th><th>Actual</th><th>Forecast</th><th>Gap</th><th>Stock</th></tr></thead>
+<tbody id="product-rows"></tbody>
+</table>
+</div><div class="product-cards" hidden="" id="product-cards"></div><div class="product-focus" hidden="" id="product-focus"></div>
+</section>
+<div class="data-foot"><span>12 weeks · 12 fictional products</span><button class="quiet" id="export" type="button">Export CSV ↓</button></div>
+</section>
+<a class="next-case" data-glow="" data-reveal="" href="fraud-case.html"><div><p class="overline">Next / 02</p><h2>Credit Card Fraud Detection</h2></div><span aria-hidden="true" class="next-icon">↗</span></a></main>
+<footer class="wrap"><span>Haoxuan Lyu · Data science portfolio</span><a href="portfolio-dark.html#work">← Selected work</a></footer>
+<script src="walmart-motion.js?v=11"></script>
+<script>"use strict";
+const departments = {
+  overall: "Overall",
+  D14: "D14 · Kitchen & Dining",
+  D20: "D20 · Bath & Shower"
+};
+const products = [
+  {id:"D14-101", name:"Stoneware Dinner Set", base:133, stock:324},
+  {id:"D14-102", name:"Bamboo Utensil Set", base:99, stock:245},
+  {id:"D14-103", name:"Glass Storage Set", base:115, stock:355},
+  {id:"D14-104", name:"Cotton Dish Towels", base:147, stock:295},
+  {id:"D14-105", name:"Silicone Baking Mat", base:77, stock:192},
+  {id:"D14-106", name:"Stackable Pantry Bins", base:120, stock:310},
+  {id:"D20-201", name:"Textured Bath Mat", base:119, stock:370},
+  {id:"D20-202", name:"Everyday Bath Towel", base:167, stock:360},
+  {id:"D20-203", name:"Waffle Shower Curtain", base:95, stock:245},
+  {id:"D20-204", name:"Shower Caddy", base:81, stock:220},
+  {id:"D20-205", name:"Cotton Washcloth Set", base:139, stock:268},
+  {id:"D20-206", name:"Bamboo Bath Tray", base:66, stock:210}
+].map(product => ({...product, department:product.id.slice(0,3)}));
+const weekCount = 12;
+const factors = [.78,.83,.75,.91,.9,.97,.88,.99,1.03,1.15,1.11,1.21];
+const dataset = products.flatMap((product,index) => factors.map((factor,offset) => {
+  const week = offset + 1;
+  const productWave = Math.sin((offset + index * 1.1) * .82);
+  const actual = Math.round(product.base * (factor + productWave * .085));
+  const forecast = Math.round(product.base * (factor + Math.cos((offset - 1 + index) * .76) * .075 - .015));
+  const stock = Math.round(product.stock * (1.12 - offset * .021 + Math.cos(offset * .85 + index) * .16));
+  const row = {product,week,runWeek:week-1,actual,forecast,stock};
+  if (product.id === "D14-104" && week === 10) Object.assign(row,{actual:219,forecast:155,stock:34});
+  if (product.id === "D20-201" && week === 12) Object.assign(row,{actual:79,forecast:138,stock:412});
+  if (product.id === "D20-203" && week === 9) Object.assign(row,{forecast:null,runWeek:null});
+  return row;
+}));
+
+const byId = id => document.getElementById(id);
+const scopeButtons = [...document.querySelectorAll("[data-scope]")];
+const rangeButtons = [...document.querySelectorAll("[data-range]")];
+const salesChart = byId("sales-chart");
+const stockChart = byId("stock-chart");
+const slider = byId("week");
+const itemSelect = byId("item");
+const search = byId("search");
+const sort = byId("sort");
+const table = byId("product-rows");
+const state = {scope:"overall",item:"",week:weekCount,range:weekCount};
+const number = new Intl.NumberFormat("en-US");
+const percent = new Intl.NumberFormat("en-US",{style:"percent",maximumFractionDigits:1});
+const units = value => value == null ? "—" : number.format(value);
+const signed = value => value == null ? "—" : (value > 0 ? "+" : "") + number.format(value);
+const weekName = week => "W" + String(week).padStart(2,"0");
+const ratio = (a,b) => b > 0 ? a / b : null;
+const set = (id,text) => WalmartUI.set(byId(id),text);
+const rangeStart = () => weekCount - state.range + 1;
+const activeProduct = () => products.find(product => product.id === state.item);
+const inScope = product => state.scope === "overall" || product.department === state.scope;
+const inSelection = row => inScope(row.product) && (!state.item || row.product.id === state.item);
+
+function aggregate(week) {
+  const rows = dataset.filter(row => row.week === week && inSelection(row));
+  const matched = rows.filter(row => row.forecast != null);
+  const sum = (data,key) => data.reduce((total,row) => total + row[key],0);
+  const forecast = matched.length ? sum(matched,"forecast") : null;
+  const matchedActual = matched.length ? sum(matched,"actual") : null;
+  const actual = sum(rows,"actual");
+  const stock = sum(rows,"stock");
+  return {week,actual,matchedActual,forecast,stock,
+    coverage:matched.length,count:rows.length,runWeek:matched[0]?.runWeek,
+    gap:forecast == null ? null : matchedActual - forecast};
+}
+
+function syncSelectors() {
+  scopeButtons.forEach(button => button.setAttribute("aria-pressed",String(button.dataset.scope === state.scope)));
+  rangeButtons.forEach(button => button.setAttribute("aria-pressed",String(Number(button.dataset.range) === state.range)));
+  const choices = products.filter(inScope);
+  itemSelect.replaceChildren(new Option("All products",""), ...choices.map(product => new Option(product.name,product.id)));
+  itemSelect.value = state.item;
+  const product = activeProduct();
+  const department = product ? departments[product.department] : departments[state.scope];
+  const trail = product ? department + " / " + product.name + " · " + product.id : department + " / All products";
+  set("scope-trail",trail);
+}
+
+function buildPath(points,x,y) {
+  let drawing = false;
+  return points.map((value,index) => {
+    if (value == null) {
+      drawing = false;
+      return "";
+    }
+    const point = (drawing ? "L" : "M") + x(index).toFixed(2) + " " + y(value).toFixed(2);
+    drawing = true;
+    return point;
+  }).join(" ");
+}
+
+const chartGeometry = new WeakMap();
+let chartWeek = null;
+function updateChartCursor(svg) {
+  const g=chartGeometry.get(svg); if(!g)return;
+  const week=Math.max(rangeStart(),Math.min(12,chartWeek ?? (slider.dataset.scrubbing?Number(slider.value):state.week)));
+  const cx=g.x(week-rangeStart());
+  const cursor=svg.querySelector('.cursor');
+  cursor.setAttribute('x1',cx);cursor.setAttribute('x2',cx);
+  for(const dot of svg.querySelectorAll('[data-series]')){
+    const value=g.rows[state.week-rangeStart()]?.[dot.dataset.series];
+    dot.style.display=value==null?'none':'';
+    if(value!=null){dot.setAttribute('cx',g.x(state.week-rangeStart()));dot.setAttribute('cy',g.y(value));}
+  }
+}
+function updateChartCursors(){for(const svg of [salesChart,stockChart])updateChartCursor(svg)}
+function draw(svg,rows,series,height) {
+  const width = Math.max(230,Math.round(svg.getBoundingClientRect().width));
+  const signature=JSON.stringify([width,height,state.scope,state.item,state.range,rows]);
+  if(chartGeometry.get(svg)?.signature===signature){updateChartCursor(svg);return;}
+  const x0 = 40;
+  const x1 = width - 10;
+  const y0 = 7;
+  const y1 = height - 21;
+  const max = Math.max(1,...rows.flatMap(row => series.map(line => row[line.key] ?? 0)));
+  const scale = Math.pow(10,Math.floor(Math.log10(max)));
+  const ceiling = Math.ceil(max / (scale / 2)) * (scale / 2);
+  const x = index => x0 + (x1-x0) * index / (rows.length - 1);
+  const y = value => y1 - (y1-y0) * value / ceiling;
+  chartGeometry.set(svg,{signature,rows,x,y});
+  const selected = state.week - rangeStart();
+  const selectedX = x(selected);
+  const markup = [];
+  svg.setAttribute("viewBox","0 0 " + width + " " + height);
+  svg.style.height = height + "px";
+  for (const fraction of [0,.5,1]) {
+    const value = ceiling * fraction;
+    const py = y(value);
+    const tick = new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}).format(value);
+    markup.push('<line class="gridline" x1="'+x0+'" x2="'+x1+'" y1="'+py+'" y2="'+py+'"/>');
+    markup.push('<text x="'+(x0-6)+'" y="'+(py+3)+'" text-anchor="end">'+tick+'</text>');
+  }
+  if (series.length === 1 || rows.every(row => row.matchedActual != null)) {
+    const first = series[0];
+    const path = buildPath(rows.map(row => row[first.key]),x,y);
+    markup.push('<defs><linearGradient id="'+svg.id+'-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="'+first.color+'" stop-opacity=".2"/><stop offset="1" stop-color="'+first.color+'" stop-opacity="0"/></linearGradient></defs>');
+    markup.push('<path fill="url(#'+svg.id+'-fill)" d="'+path+' L '+x1+' '+y1+' L '+x0+' '+y1+' Z"/>');
+  }
+  const spacing = width < 460 && rows.length > 6 ? 2 : 1;
+  rows.forEach((row,index) => {
+    if (index !== rows.length-1 && (index % spacing !== 0 || (spacing === 2 && index === rows.length-2))) return;
+    const px = x(index);
+    markup.push('<text x="'+px+'" y="'+(height-4)+'" text-anchor="middle">'+weekName(row.week)+'</text>');
+  });
+  markup.push('<line class="cursor" x1="'+selectedX+'" x2="'+selectedX+'" y1="'+y0+'" y2="'+y1+'"/>');
+  for (const line of series) {
+    const path = buildPath(rows.map(row => row[line.key]),x,y);
+    markup.push('<path class="'+line.style+'" d="'+path+'"/>');
+    const value = rows[selected][line.key];
+    markup.push('<circle data-series="'+line.key+'" cx="'+selectedX+'" cy="'+y(value??0)+'" r="4" fill="'+line.color+'" stroke="#151320" stroke-width="1.4"/>');
+  }
+  svg.innerHTML = markup.join("");
+  updateChartCursor(svg);
+}
+
+const salesSeries = [
+  {key:"matchedActual",style:"actual",color:"#c4b0ff"},
+  {key:"forecast",style:"forecast",color:"#8bcfe9"}
+];
+const stockSeries = [{key:"stock",style:"stock",color:"#84d9bc"}];
+let chartSelection="";
+function drawCharts() {
+  const selection=[state.scope,state.item,state.range].join("/");
+  if(selection===chartSelection&&chartGeometry.has(salesChart)&&chartGeometry.has(stockChart)){updateChartCursors();return;}
+  chartSelection=selection;
+  const rows = Array.from({length:state.range},(_,index) => aggregate(rangeStart()+index));
+  draw(salesChart,rows,salesSeries,190);
+  draw(stockChart,rows,stockSeries,116);
+}
+
+function updateReadout(row) {
+  const attainment = ratio(row.matchedActual,row.forecast);
+  const cover = ratio(row.stock,row.actual);
+  set("pos",units(row.actual));
+  set("matched-pos",units(row.matchedActual));
+  set("forecast",units(row.forecast));
+  set("stock",units(row.stock));
+  set("gap",signed(row.gap));
+  byId("gap").className = row.gap > 0 ? "plus" : row.gap < 0 ? "minus" : "";
+  set("attainment",attainment == null ? "—" : percent.format(attainment));
+  set("coverage",row.coverage+" / "+row.count+" products");
+  set("run",row.runWeek == null ? "—" : weekName(row.runWeek)+" → "+weekName(row.week));
+  set("stock-ratio",cover == null ? "—" : cover.toFixed(2)+" weeks");
+  let title = "See the product mix";
+  let copy = "Explore a product below.";
+  if (row.coverage < row.count) {
+    title = row.coverage ? "Incomplete coverage" : "No forecast for this week";
+    copy = "Sales and stock remain visible.";
+  } else if (cover != null && cover < .5 && attainment != null && attainment > 1.1) {
+    title = "Stock needs a closer look";
+    copy = "Above forecast. Under half a week of stock.";
+  } else if (cover != null && cover > 4 && attainment != null && attainment < .85) {
+    title = "Sales slowed. Stock stayed.";
+    copy = "Below forecast. Over four weeks of stock.";
+  } else if (state.item) {
+    title = "A week in context";
+    copy = "Compare the trend across weeks.";
+  }
+  set("read-title",title);
+  set("read-copy",copy);
+}
+
+function productSpark(product,width=124,height=32,dual=false){
+ const rows=dataset.filter(r=>r.product.id===product.id),values=rows.flatMap(r=>dual?[r.actual,r.forecast??r.actual]:[r.actual]),lo=Math.min(...values)*.85,hi=Math.max(...values)*1.1;
+ const x=i=>5+i*(width-10)/11,y=v=>height-4-(v-lo)/(hi-lo)*(height-8);
+ const line=key=>{let on=false;return rows.map((r,i)=>{if(r[key]==null){on=false;return ''}const d=(on?'L':'M')+x(i).toFixed(1)+' '+y(r[key]).toFixed(1);on=true;return d}).join(' ')};
+ return '<svg viewBox="0 0 '+width+' '+height+'" class="sparkline" aria-hidden="true"><path d="'+line('actual')+'" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+(dual?'<path d="'+line('forecast')+'" fill="none" stroke="#8bcfe9" stroke-dasharray="4 5" stroke-width="1.6"/>':'')+'<circle cx="'+x(state.week-1)+'" cy="'+y(rows[state.week-1].actual)+'" r="3.3" fill="currentColor"/></svg>';
+}
+function productIcon(product){
+ const index=({'D20-201':4,'D20-202':3,'D20-203':3,'D20-204':5,'D20-205':3,'D20-206':5})[product.id]??products.findIndex(p=>p.id===product.id)%6;
+ const paths=[
+ '<ellipse cx="20" cy="19" rx="13" ry="8"/><ellipse cx="20" cy="19" rx="8" ry="4"/><path d="M7 19v3c0 5 26 5 26 0v-3"/>',
+ '<path d="M12 7v13m-4-13v7c0 5 8 5 8 0V7m-4 12v14M27 7c-6 1-6 13 0 13s6-12 0-13Zm0 13v13"/>',
+ '<rect x="7" y="15" width="26" height="18" rx="5"/><path d="M6 15h28M12 10h16M15 6h10"/>',
+ '<path d="M8 9h24v23H8zM13 9v23M27 9v23M8 25h24M8 28h24"/>',
+ '<rect x="6" y="10" width="28" height="22" rx="6"/><path d="M11 16h18M11 22h18M11 27h18"/>',
+ '<path d="M7 12h26l-3 20H10ZM12 12V8h16v4M13 18h14M14 23h12"/>'
+ ];return '<span class="sku-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[index]+'</svg></span>';
+}
+let pulseVisible=true,pulseDirty=false;
+function productTable(force=false){
+ if(!pulseVisible&&!force){pulseDirty=true;return;}pulseDirty=false;
+ const term=search.value.toLowerCase().replace(/[^a-z0-9 ]/g,'').trim();
+ const rows=dataset.filter(r=>r.week===state.week&&inScope(r.product)&&term.split(/\s+/).every(t=>(r.product.name+' '+r.product.id).toLowerCase().replace(/[^a-z0-9 ]/g,'').includes(t)));
+ const gap=r=>r.forecast==null?-1:Math.abs(r.actual-r.forecast);
+ rows.sort({pos:(a,b)=>b.actual-a.actual,gap:(a,b)=>gap(b)-gap(a),stock:(a,b)=>a.stock-b.stock}[sort.value]);
+ set('products-caption',rows.length+(rows.length===1?' product · ':' products · ')+weekName(state.week));
+ const max=Math.max(1,...rows.map(r=>r.actual));
+ WalmartUI.html(table,rows.length?rows.map((r,i)=>{
+  const selected=r.product.id===(state.preview||state.item),d=r.forecast==null?null:r.actual-r.forecast,cover=r.actual?r.stock/r.actual:0;
+  return '<tr class="pulse-row '+(selected?'is-selected':'')+'" style="--row:'+i+'"><td><button class="product" type="button" aria-haspopup="dialog" aria-controls="wm-quicklook" data-item="'+r.product.id+'" aria-pressed="'+selected+'">'+productIcon(r.product)+'<span class="sku-label">'+r.product.name+'<small>'+r.product.id+'</small></span><span class="row-arrow" aria-hidden="true">↗</span></button></td><td>'+productSpark(r.product)+'</td><td><div class="cell-value">'+units(r.actual)+'<i style="--bar:'+r.actual/max*100+'%"></i></div></td><td class="forecast-cell">'+units(r.forecast)+'</td><td><span class="gap-pill '+(d>0?'plus':d<0?'minus':'')+'">'+signed(d)+'</span></td><td><span class="stock-indicator '+(cover<.5?'low':'')+'"><i></i>'+units(r.stock)+'</span></td></tr>';
+ }).join(''):'<tr><td colspan="6" class="empty">No products found.</td></tr>');
+ WalmartUI.html(byId('product-cards'),rows.length?rows.map(r=>{const d=r.forecast==null?null:r.actual-r.forecast;return '<button type="button" aria-haspopup="dialog" aria-controls="wm-quicklook" data-item="'+r.product.id+'" class="sku-card '+((state.preview||state.item)===r.product.id?'selected':'')+'" aria-pressed="'+((state.preview||state.item)===r.product.id)+'">'+productIcon(r.product)+'<span class="sku-card-title">'+r.product.name+'</span><span class="sku-card-id">'+r.product.id+'</span>'+productSpark(r.product,240,60,true)+'<span class="sku-card-stats"><span><b>'+units(r.actual)+'</b>Actual</span><span><b>'+units(r.forecast)+'</b>Forecast</span><span><b>'+units(r.stock)+'</b>Stock</span></span><span class="sku-card-gap">'+signed(d)+' vs. forecast <span aria-hidden="true">↗</span></span></button>'}).join(''):'<p class="empty">No products found.</p>');
+ renderProductFocus();
+}
+function renderProductFocus(){byId('product-focus').hidden=true;}
+
+function renderWeek() {
+  slider.min = rangeStart();
+  if(!slider.dataset.scrubbing)slider.value = state.week;
+  slider.style.setProperty("--fill",100*(Number(slider.value)-rangeStart())/(weekCount-rangeStart())+"%");
+  slider.setAttribute("aria-valuetext","Week "+state.week);
+  set("week-value",weekName(state.week));
+  set("week-title",weekName(state.week));
+  byId("prev-week").disabled = state.week === rangeStart();
+  byId("next-week").disabled = state.week === weekCount;
+  updateReadout(aggregate(state.week));
+  productTable();
+  if(!byId("panel-forecast").hidden)drawCharts();
+  if (!byId('panel-forecast').hidden && typeof updateDiagnostics === "function") updateDiagnostics();
+  document.dispatchEvent(new CustomEvent("walmart:change"));
+}
+
+function changeWeek(week,continuous=false) {
+  if(!continuous)chartWeek=null;
+  const next = Math.max(rangeStart(),Math.min(weekCount,Math.round(week)));
+  if (next === state.week) {updateChartCursors();return;}
+  state.week = next;
+  renderWeek();
+}
+
+scopeButtons.forEach(button => button.addEventListener("click",() => {
+  state.scope = button.dataset.scope;
+  state.preview="";state.item="";
+  const product = activeProduct();
+  if (product && !inScope(product)) state.item = "";
+  search.value = "";
+  syncSelectors();
+  renderWeek();
+}));
+rangeButtons.forEach(button => button.addEventListener("click",() => {
+  state.range = Number(button.dataset.range);
+  state.week = Math.max(state.week,rangeStart());
+  syncSelectors();
+  renderWeek();
+}));
+itemSelect.addEventListener("change",() => {
+  state.item = itemSelect.value;
+  state.preview=state.item;
+  syncSelectors();
+  renderWeek();
+});
+let weekFrame=0,weekTimer=0,lastWeekPaint=0;
+function queueWeek(value){
+ const now=performance.now();
+ if(now-lastWeekPaint>=70){clearTimeout(weekTimer);weekTimer=0;lastWeekPaint=now;changeWeek(value,true);}
+ else{clearTimeout(weekTimer);weekTimer=setTimeout(()=>{weekTimer=0;lastWeekPaint=performance.now();changeWeek(Number(slider.value),true)},70-(now-lastWeekPaint));}
+}
+slider.addEventListener("input",()=>{if(!weekFrame)weekFrame=requestAnimationFrame(()=>{weekFrame=0;chartWeek=Number(slider.value);updateChartCursors();queueWeek(chartWeek)})});
+slider.addEventListener("change",()=>{cancelAnimationFrame(weekFrame);clearTimeout(weekTimer);weekFrame=0;weekTimer=0;changeWeek(Number(slider.value));slider.value=state.week});
+byId("prev-week").addEventListener("click",() => changeWeek(state.week-1));
+byId("next-week").addEventListener("click",() => changeWeek(state.week+1));
+search.addEventListener("input",()=>productTable(true));
+sort.addEventListener("change",()=>productTable(true));
+
+function focusCharts() {
+  const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth";
+  byId("explorer").scrollIntoView({behavior,block:"start"});
+}
+function showExample(scope,item,week) {
+  Object.assign(state,{scope,item,preview:item,week,range:12});
+  search.value = "";
+  syncSelectors();
+  renderWeek();
+}
+
+let cursorFrame=0,pendingChartWeek=null;
+function chooseFromChart(event) {
+  const rect=event.currentTarget.getBoundingClientRect();
+  const fraction=Math.max(0,Math.min(1,(event.clientX-rect.left-40)/(rect.width-50)));
+  pendingChartWeek=rangeStart()+fraction*(state.range-1);
+  if(!cursorFrame)cursorFrame=requestAnimationFrame(()=>{
+    cursorFrame=0;chartWeek=pendingChartWeek;changeWeek(chartWeek,true);updateChartCursors();
+  });
+}
+for (const chart of [salesChart,stockChart]) {
+  chart.addEventListener('pointerdown',event=>{
+    stopPlayback();chart.setPointerCapture(event.pointerId);chart.dataset.dragging='true';chooseFromChart(event);
+  });
+  chart.addEventListener('pointermove',event=>{
+    if(event.pointerType==='mouse'||chart.dataset.dragging)chooseFromChart(event);
+  });
+  const release=()=>{delete chart.dataset.dragging};
+  chart.addEventListener('pointerup',release);chart.addEventListener('pointercancel',release);
+  chart.addEventListener('lostpointercapture',release);
+  chart.addEventListener('pointerleave',()=>{if(!chart.dataset.dragging){cancelAnimationFrame(cursorFrame);cursorFrame=0;chartWeek=null;updateChartCursors()}});
+}
+
+syncSelectors();
+renderWeek();
+let plotWidth = salesChart.getBoundingClientRect().width;
+new ResizeObserver(() => {
+  chartSelection="";
+  const next = salesChart.getBoundingClientRect().width;
+  if (next !== plotWidth) {
+    plotWidth = next;
+    drawCharts();
+  }
+}).observe(salesChart);
+
+function updateDiagnostics(){
+  if(!byId('wape'))return;
+  const rows=dataset.filter(row=>inSelection(row)&&row.week>=rangeStart()),matched=rows.filter(row=>row.forecast!=null);
+  const actual=matched.reduce((n,r)=>n+r.actual,0),absolute=matched.reduce((n,r)=>n+Math.abs(r.actual-r.forecast),0),net=matched.reduce((n,r)=>n+r.actual-r.forecast,0);
+  set('wape',actual?(absolute/actual*100).toFixed(1)+'%':'—');set('net-gap',actual?(net>0?'+':'')+(net/actual*100).toFixed(1)+'%':'—');
+  set('diagnostic-scope',(activeProduct()?.name||departments[state.scope])+' / '+weekName(rangeStart())+'–W12');
+  set('diagnostic-reading',actual?units(absolute)+' absolute units · '+signed(net)+' net units':'No matched sales.');
+  const grouped=products.filter(inScope).filter(p=>!state.item||p.id===state.item).map(p=>({p,error:matched.filter(r=>r.product.id===p.id).reduce((n,r)=>n+Math.abs(r.actual-r.forecast),0)})).sort((a,b)=>b.error-a.error).slice(0,5);
+  WalmartUI.html(byId('error-contributors'),grouped.map(({p,error})=>'<div class="error-row"><span>'+p.name+'</span><div class="error-track"><div class="error-bar" style="--width:'+(absolute?error/absolute*100:0)+'%"></div></div><span>'+(absolute?(error/absolute*100).toFixed(0):'0')+'%</span></div>').join(''));
+  set('matched-caption',matched.length+' / '+rows.length+' records matched');
+  updatePlanning();
+  document.querySelectorAll('[data-scenario]').forEach(b=>{const matches={stock:state.item==='D14-104'&&state.week===10,slow:state.item==='D20-201'&&state.week===12,missing:state.item==='D20-203'&&state.week===9};b.setAttribute('aria-pressed',String(matches[b.dataset.scenario]))});
+}
+function updatePlanning(){
+  const row=aggregate(state.week),change=Number(byId('demand-change').value),inbound=Number(byId('inbound-units').value),demand=Math.round(row.actual*(1+change/100)),balance=row.stock+inbound-demand;
+  set('demand-change-label',(change>=0?'+':'')+change+'%');set('inbound-label',units(inbound)+' units');set('planning-context',(activeProduct()?.name||departments[state.scope])+' · '+weekName(state.week)+' · '+units(row.actual)+' POS units / '+units(row.stock)+' ending stock units');
+  set('planning-outcome',balance<0?'Potential unmet units':'Projected ending stock');set('planned-stock',units(Math.abs(balance)));set('planned-demand',units(demand)+' units of scenario demand');
+  set('planning-copy',balance<0?'Demand exceeds available stock.':'Units remaining after scenario demand.');
+}
+let planningFrame=0;
+for(const id of ['demand-change','inbound-units']){byId(id).addEventListener('input',()=>{if(!planningFrame)planningFrame=requestAnimationFrame(()=>{planningFrame=0;updatePlanning()})});byId(id).addEventListener('change',()=>{cancelAnimationFrame(planningFrame);planningFrame=0;updatePlanning()});}
+byId('reset-planning').addEventListener('click',()=>{for(const id of ['demand-change','inbound-units']){byId(id).value=0;byId(id).dispatchEvent(new Event('input',{bubbles:true}))}window.portfolioToast?.('Inventory assumptions reset')});
+let playback=null;
+function stopPlayback(){clearInterval(playback);playback=null;byId('play-weeks').textContent='Play weeks ▷';byId('play-weeks').setAttribute('aria-pressed','false')}
+byId('play-weeks').addEventListener('click',()=>{if(playback){stopPlayback();return}if(state.week===weekCount)changeWeek(rangeStart());byId('play-weeks').textContent='Pause weeks Ⅱ';byId('play-weeks').setAttribute('aria-pressed','true');playback=setInterval(()=>{if(state.week>=weekCount){stopPlayback();return}changeWeek(state.week+1);if(state.week===weekCount)stopPlayback()},1300)});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopPlayback()});
+for(const button of document.querySelectorAll('[data-scenario]'))button.addEventListener('click',()=>{stopPlayback();const scenarios={stock:['D14','D14-104',10],slow:['D20','D20-201',12],missing:['D20','D20-203',9]};showExample(...scenarios[button.dataset.scenario]);focusCharts()});
+byId('reset-view').addEventListener('click',()=>{stopPlayback();Object.assign(state,{scope:'overall',item:'',preview:'',week:12,range:12});search.value='';sort.value='pos';sort.dispatchEvent(new Event('change',{bubbles:true}));syncSelectors();renderWeek();window.portfolioToast?.('View reset')});
+for(const el of [...scopeButtons,...rangeButtons,itemSelect,slider,byId('prev-week'),byId('next-week')]){el.addEventListener(el===itemSelect?'change':el===slider?'input':'click',stopPlayback)}
+updateDiagnostics();
+
+document.querySelectorAll('[data-product-view]').forEach(b=>b.addEventListener('click',()=>{
+ productTable(true);const cards=b.dataset.productView==='cards';byId('product-pulse').dataset.view=b.dataset.productView;byId('product-cards').hidden=!cards;document.querySelector('.products .table-wrap').hidden=cards;
+ document.querySelectorAll('[data-product-view]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));
+}));
+if(matchMedia('(max-width:760px)').matches)document.querySelector('[data-product-view="cards"]').click();
+new IntersectionObserver(entries=>{pulseVisible=entries[0].isIntersecting;if(pulseVisible&&pulseDirty)productTable(true)},{rootMargin:'160px'}).observe(byId('product-pulse'));
+</script>
+<script src="walmart-data.js?v=7"></script><script src="walmart-complete.js?v=14"></script>
+<script src="portfolio-ui.js?v=10"></script><script src="portfolio-effects.js?v=7"></script><script src="portfolio-controls.js?v=7"></script></body>
+</html>

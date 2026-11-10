@@ -1,0 +1,57 @@
+.date-studio .phone,.date-studio .phone:hover{transform:none}
+.date-studio .phone-workspace{padding:3px;min-width:0;max-width:100%;width:100%}
+.date-studio .phone-view{width:100%;min-width:0;max-width:100%;padding:2px 2px 12px}
+.date-studio .phone-screen input[type=text],.date-studio .phone-screen textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;margin-inline:0;border-radius:14px}
+.date-studio .phone-screen #persona-name{height:42px;padding:9px 12px;line-height:22px;outline-offset:1px;box-shadow:inset 0 1px 2px #a17e9310}
+.date-studio .phone-screen input:focus-visible,.date-studio .phone-screen textarea:focus-visible{outline:2px solid color-mix(in srgb,var(--persona-color) 65%,transparent);outline-offset:1px}
+.date-studio .phone-status{font-variant-numeric:tabular-nums;flex-shrink:0}.phone-status time{font-size:10px;font-weight:650;line-height:1}
+.date-studio .phone-screen .chat-compose{align-items:flex-end;border:1px solid #9a7b9d30;padding:6px 6px 6px 12px;border-radius:21px;background:#ffffffa6;box-shadow:0 4px 12px #9f789009;margin-top:10px}
+.date-studio .phone-screen .chat-compose textarea{min-height:29px;max-height:91px;height:29px;resize:none;overflow-y:hidden;background:transparent;border:0;box-shadow:none;font-size:11px;line-height:18px;padding:5px 3px 5px 0;margin:0;outline:none;flex:1;border-radius:0;scrollbar-width:thin}
+.date-studio .phone-screen .chat-compose button{margin-bottom:0;min-width:29px;min-height:29px;transition:background .2s,transform .2s}.chat-compose #chat-stop{font-size:11px;background:#80648f}.chat-compose [hidden]{display:none!important}
+.date-studio .chat-bubble{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;font-size:11px}.chat-bubble.pending{min-width:44px;color:#9f85a3}.chat-bubble.streaming::after{content:"";display:inline-block;vertical-align:baseline;width:4px;height:11px;background:var(--persona-color);margin-left:3px;border-radius:1px;animation:reply-caret .8s ease-in-out infinite}
+.chat-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:100%;text-align:center;padding:30px 14px;color:#9b7d9d}.chat-empty .empty-symbol{font-size:50px;line-height:1;color:color-mix(in srgb,var(--persona-color) 65%,#aa85ad);font-weight:300}.chat-empty h5{font-family:Georgia,serif;font-style:italic;font-size:23px;font-weight:400;letter-spacing:-.025em;color:#86628c;margin:0;line-height:1.2}.chat-empty p{font-size:9px;line-height:1.7;max-width:160px;color:#a086a1}.chat-feedback{padding:9px 9px 0;display:flex;gap:8px;justify-content:space-between;align-items:center;color:#9b6b7e;font-size:9px;line-height:1.5;flex-shrink:0}.chat-feedback button{border:1px solid #aa8fae33;background:#ffffff77;color:#785c82;padding:5px 9px;border-radius:99px;flex-shrink:0;font-size:9px}.chat-person{position:relative}.chat-person>button{order:3}.connection-dot{width:5px;height:5px;border-radius:50%;background:#b9a6ba;margin-left:auto;box-shadow:none;transition:background .3s}.connection-dot[data-state=ready]{background:#72a293;box-shadow:0 0 8px #71ac8f40}.connection-dot[data-state=busy]{background:var(--persona-color);animation:reply-caret 1s ease-in-out infinite}.chat-person>button{margin-left:5px}.scene-ribbon{border-bottom:1px solid #aa8fae20;padding-bottom:6px;margin-bottom:7px}.world-choices button[aria-pressed=true]{transform:none}.date-studio .scene-dock{margin-top:23px}.date-studio .phone-nav button[data-view=phone-chat] span{font-size:22px}.date-studio #ai-connection[data-state=offline]{color:#a27780}.date-studio .chat-messages{scroll-behavior:auto}
+@keyframes reply-caret{50%{opacity:.3}}
+.motion-off .streaming::after,.motion-off .connection-dot{animation:none!important}
+@media(max-width:410px){.date-studio .phone-screen #persona-name{font-size:11px}.date-studio .phone-workspace{padding:3px}.date-studio .phone-view{padding-inline:2px}.date-studio .chat-bubble{font-size:10px}.date-studio .phone-screen .chat-compose textarea{font-size:10px}.chat-empty h5{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.streaming::after,.connection-dot{animation:none!important}}
+.date-studio #phone-form:has(#free-fields:not([hidden])) .phone-avatar{width:43px;height:43px;font-size:25px;margin:8px auto;border-radius:17px}
+.date-studio #phone-form:has(#free-fields:not([hidden])) h4{font-size:25px;margin-bottom:8px}
+.date-studio #phone-form:has(#free-fields:not([hidden])) label{margin-top:11px}
+.date-studio .theme-picks{display:flex;flex-wrap:wrap;gap:6px}
+.date-studio .theme-picks button{display:inline-flex;align-items:center;gap:5px;width:auto;height:32px;padding:3px 8px;border-radius:99px;color:#d7c9e7;font-size:9px;font-weight:600;white-space:nowrap}
+.date-studio .theme-picks button[aria-pressed=true]{background:#ffffff0b;border-color:var(--persona-light);color:#faf5ff}
+.date-studio .theme-picks i{width:13px;height:13px;flex:none}
+.date-studio .chat-tone{margin-inline-start:auto;flex:none;border-radius:99px;background:color-mix(in srgb,var(--persona-color) 24%,white);color:#463152;padding:3px 6px;font-size:9px;font-weight:650}
+.date-studio .phone-screen .chat-compose button{width:36px;height:36px}
+/* Browser-only dialogue: compact optional prompts and a fourth navigation destination. */
+.date-studio .phone-nav{grid-template-columns:repeat(4,1fr);gap:3px}
+.chat-suggestions{display:flex;gap:5px;padding-top:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.chat-suggestions button{border:1px solid color-mix(in srgb,var(--persona-color) 28%,transparent);border-radius:99px;background:#ffffff70;color:#735d7b;font:inherit;font-size:8px;line-height:1.4;padding:7px 9px;white-space:nowrap;min-height:30px;transition:background .2s,transform .2s;flex-shrink:0}
+.chat-suggestions button:hover{background:#fff;transform:translateY(-1px)}
+.chat-suggestions button:disabled{opacity:.4;transform:none}
+.explore-more{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:1px solid #ffffff15;background:#ffffff04;color:#c4b5d8;border-radius:17px;padding:13px 15px;font-size:10px;margin-top:9px;transition:background .2s,border-color .2s}
+.explore-more:hover{background:#ffffff09;border-color:#ffffff35}
+.date-studio #ai-connection{color:#987a99}
+.date-studio .scene-tile{border-radius:20px;padding:14px 12px;gap:10px}
+.date-studio .scene-tile strong{font-size:12px}
+.date-studio .scene-tile i{width:37px;height:37px;font-size:23px;flex-shrink:0}
+.date-studio .scene-tile small{font-size:8px;line-height:1.5}
+/* Keep the Studio's controls and device within one composed desktop canvas. */
+@media(min-width:761px){
+ .date-studio .studio-layout{width:100%;max-width:940px;margin-inline:auto;grid-template-columns:minmax(0,420px) 316px;justify-content:center;gap:clamp(32px,5vw,68px);padding:38px 36px 44px;align-items:center}
+ .date-studio .studio-story{min-width:0;width:100%;align-items:stretch}
+ .date-studio .studio-story h3{font-size:clamp(47px,4.5vw,60px);line-height:1.04;min-height:0;max-width:none;margin:14px 0 18px;text-wrap:balance}
+ .date-studio .studio-story>p:not(.eyebrow){max-width:none}
+ .date-studio .persona-aura{max-width:320px;height:205px;margin:4px auto 0}
+ .date-studio .studio-controls{max-width:none;margin-top:9px;gap:13px}
+ .date-studio .scene-dock{max-width:none;margin-top:22px;padding-top:19px}
+ .date-studio .phone-stage{justify-content:flex-start;width:316px;align-self:center}
+ .date-studio .phone{width:316px}
+ .date-studio .studio-story .button-row{margin-top:15px}
+}
+@media(min-width:761px) and (max-width:900px){
+ .date-studio .studio-layout{grid-template-columns:minmax(0,1fr) 288px;gap:30px;padding:30px 26px}
+ .date-studio .phone-stage,.date-studio .phone{width:288px}
+ .date-studio .studio-story h3{font-size:47px}
+ .date-studio .persona-aura{height:185px}
+}

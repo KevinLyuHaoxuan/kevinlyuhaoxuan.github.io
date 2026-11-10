@@ -1,0 +1,61 @@
+/* DateGPT's Figma presentation, scoped to the existing Originals section. */
+.studio-originals .section-title{align-items:end;gap:24px}
+.studio-originals .originals-link{display:inline-flex;align-items:center;gap:12px;color:#d1bee9;font-size:12px;padding:12px 18px;border:1px solid #bd9fdf36;border-radius:99px;transition:background .2s,transform .2s;white-space:nowrap}
+.studio-originals .originals-link:hover{background:#bd9fdf12;transform:translateY(-2px)}
+.studio-originals .originals-shell{border:1px solid #c4a8dd24;border-radius:28px;overflow:hidden;background:#100d15}
+.studio-originals .originals-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid #c4a8dd20;background:#17121d}
+.studio-originals .originals-tabs{display:flex;gap:5px;padding:4px;border:1px solid #ffffff0d;border-radius:99px;background:#0b090e}
+.studio-originals .originals-tabs button{min-height:40px;padding:10px 20px;border:0;border-radius:99px;color:#a89aaf;background:transparent;font:inherit;font-size:12px;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
+.studio-originals .originals-tabs button[aria-selected=true]{color:#f3eaff;background:#51415f;box-shadow:inset 0 1px #ffffff12,0 3px 12px #0003}
+.studio-originals .originals-tabs button:focus-visible,.studio-originals .originals-image:focus-visible{outline:2px solid #c6a7ee;outline-offset:4px}
+.studio-originals .originals-mark{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#95849e}
+.studio-originals .originals-panel{margin:0;animation:studio-board-in .32s cubic-bezier(.2,.7,.2,1)}
+.studio-originals .originals-panel[hidden]{display:none!important}
+.studio-originals .originals-image{display:block;position:relative;width:100%;padding:0;border:0;background:#100d15;cursor:zoom-in;overflow:hidden}
+.studio-originals .originals-image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover){.studio-originals .originals-image:hover img{transform:scale(1.012)}}
+.studio-originals .originals-zoom{position:absolute;right:20px;bottom:20px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid #e0c4ff30;background:#2c223ade;color:#f2e6ff;font-size:22px;backdrop-filter:blur(12px);transition:transform .2s}
+.studio-originals .originals-image:hover .originals-zoom{transform:translateY(-3px)}
+.studio-originals figcaption{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;border-top:1px solid #c4a8dd18;color:#b9a9c3;font-size:12px}
+.studio-originals figcaption span + span{color:#81728c;font-size:11px}
+.studio-originals .source-caption{margin-top:18px;color:#8f8097;font-size:11px;line-height:1.7}
+@keyframes studio-board-in{from{opacity:.5;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.studio-originals .section-title{align-items:start;flex-direction:column;gap:18px}.studio-originals .originals-shell{border-radius:20px}.studio-originals .originals-toolbar{padding:13px 12px}.studio-originals .originals-tabs{width:100%}.studio-originals .originals-tabs button{flex:1;padding:10px 12px}.studio-originals .originals-mark{display:none}.studio-originals figcaption{padding:15px 16px;font-size:11px}.studio-originals figcaption span + span{display:none}.studio-originals .originals-zoom{right:12px;bottom:12px;width:32px;height:32px;font-size:18px}}
+@media(prefers-reduced-motion:reduce){.studio-originals *{animation:none!important;transition:none!important}}
+/* Six compact flow galleries, using actual Figma prototype captures. */
+.studio-originals .originals-tabs{overflow:auto;scrollbar-width:none;max-width:100%;border-radius:22px;flex-wrap:wrap}
+.studio-originals .originals-tabs button{padding:11px 17px}
+.studio-originals .originals-toolbar{gap:12px}
+.studio-originals .originals-flow-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:38px 34px 20px}
+.studio-originals .originals-flow-heading>div:first-child{display:flex;gap:20px;align-items:baseline}
+.studio-originals .originals-index{color:#a68bc5;font-size:11px;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.studio-originals .originals-flow-heading h3{font-size:clamp(20px,2.5vw,32px);font-weight:550;letter-spacing:-.04em;line-height:1.15}
+.studio-originals .originals-arrows{display:flex;gap:7px}
+.studio-originals .originals-arrows button{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid #c4a8dd30;background:#21192b;color:#ded0ed;cursor:pointer;font-size:17px;transition:background .2s,transform .2s}
+.studio-originals .originals-arrows button:hover{background:#3b2d4a;transform:translateY(-2px)}
+.studio-originals .originals-arrows button:disabled{opacity:.25;cursor:default;transform:none}
+.studio-originals .originals-steps{display:flex;align-items:center;gap:4px;padding:0 34px 28px;overflow:auto;scrollbar-width:none}
+.studio-originals .originals-steps button{flex:none;display:flex;align-items:center;gap:8px;border:0;background:transparent;padding:7px 10px;border-radius:99px;font:inherit;font-size:11px;color:#96859f;cursor:pointer;transition:color .25s,background .25s}
+.studio-originals .originals-steps button+button:before{content:'→';margin-right:8px;color:#574460}
+.studio-originals .originals-steps button[aria-pressed=true]{background:#c4a8dd12;color:#e4d4f1}
+.studio-originals .originals-steps i{font:inherit;font-size:9px;opacity:.55}
+.studio-originals .originals-screen-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:34px;padding:8px 34px 28px;scrollbar-width:thin;scrollbar-color:#756080 #17121d;background:radial-gradient(ellipse at 50% 30%,#a178c015,transparent 70%)}
+.studio-originals .originals-screen{margin:0;min-width:0;scroll-snap-align:start}
+.studio-originals .originals-screen-image{display:block;width:100%;max-width:290px;margin:auto;padding:0;position:relative;overflow:hidden;border-radius:25px;border:1px solid #d7c5e33b;background:#19121f;cursor:zoom-in;box-shadow:0 16px 26px #0004,0 0 0 5px #ffffff03;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.studio-originals .originals-screen-image img{display:block;width:100%;height:auto;aspect-ratio:452/980;object-fit:cover}
+.studio-originals .originals-screen-image .originals-zoom{right:10px;bottom:10px;width:30px;height:30px;font-size:16px;opacity:0;transform:translateY(4px)}
+@media(hover:hover){.studio-originals .originals-screen-image:hover{transform:translateY(-5px);box-shadow:0 22px 35px #0006,0 0 0 5px #c7a7e40a}.studio-originals .originals-screen-image:hover .originals-zoom{opacity:1;transform:none}}
+.studio-originals .originals-screen figcaption{padding:17px 3px 0;border:0;font-size:12px;max-width:290px;margin:auto;color:#c8b7d2}
+.studio-originals .originals-screen figcaption a{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#c4a8dd0d;color:#ab92bb}
+.studio-originals .originals-prototypes,.studio-originals .overview-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid #c4a8dd1c;padding:22px 30px;font-size:13px;color:#b5a4c0}
+.studio-originals .originals-prototypes>div{display:flex;gap:10px;flex-wrap:wrap}
+.studio-originals .originals-prototypes>span{color:#e4d7ec;font-size:16px}
+.studio-originals .overview-footer .originals-link{background:none}
+.studio-originals .originals-panel:focus-visible,.studio-originals button:focus-visible,.studio-originals a:focus-visible{outline:2px solid #c7a7e4;outline-offset:3px}
+.image-dialog:has(img[src*='/studio/']){width:min(95vw,650px)}
+.image-dialog img[src*='/studio/']{max-height:82vh;width:auto;max-width:100%;margin:auto;display:block;object-fit:contain;border-radius:20px}
+@media(max-width:900px){.studio-originals .originals-mark{display:none}.studio-originals .originals-screen-strip{grid-auto-columns:minmax(220px,30%)}.studio-originals .originals-tabs{width:100%}.studio-originals .originals-tabs button{flex:1}}
+@media(max-width:640px){.studio-originals .originals-tabs{flex-wrap:nowrap;border-radius:18px}.studio-originals .originals-tabs button{flex:none;padding:10px 14px}.studio-originals .originals-flow-heading{padding:26px 20px 18px;align-items:start}.studio-originals .originals-flow-heading>div:first-child{gap:12px}.studio-originals .originals-flow-heading h3{max-width:230px}.studio-originals .originals-arrows button{width:32px;height:32px}.studio-originals .originals-steps{padding:0 14px 22px}.studio-originals .originals-steps button{padding:7px 6px;font-size:10px}.studio-originals .originals-steps button+button:before{margin-right:2px}.studio-originals .originals-screen-strip{grid-auto-columns:min(74vw,280px);gap:20px;padding:6px 20px 24px;scroll-padding:20px}.studio-originals .originals-screen figcaption{display:flex;padding-top:12px}.studio-originals .originals-prototypes{padding:20px;align-items:start;flex-direction:column;gap:14px}.studio-originals .originals-prototypes>div{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}.studio-originals .originals-prototypes .originals-link{font-size:10px;padding:12px 9px;gap:5px;justify-content:center}.studio-originals .overview-footer{padding:18px;font-size:11px}.studio-originals .overview-footer .originals-link{font-size:10px;padding:10px 12px}}
+.motion-off .studio-originals *{animation:none!important;transition:none!important}
+.studio-originals .originals-screen.is-current .originals-screen-image{box-shadow:0 16px 30px #0004,0 0 0 4px #c4a8dd26}
+.studio-originals .originals-screen.is-current figcaption{color:#eee1f8}

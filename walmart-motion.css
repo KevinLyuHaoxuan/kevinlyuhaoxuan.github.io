@@ -1,0 +1,28 @@
+/* Short, uninterrupted split-flap turns; only transform animates. */
+.wm-number{position:relative;display:inline-block;white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.12;letter-spacing:inherit}
+wm-rest{display:contents}
+.wm-digit{position:relative;display:inline-block;min-width:0;text-align:center;perspective:220px}
+.wm-digit::after,.wm-punct::after{content:attr(data-final)}
+.wm-digit wm-flap{display:none!important;position:absolute;inset:0;pointer-events:none;text-align:center;backface-visibility:hidden;transform-origin:50% 50%;font-style:normal;line-height:inherit}
+.wm-digit.is-flipping wm-flap{display:block!important;will-change:transform}
+.wm-digit.is-flipping::before{content:attr(data-old);position:absolute;inset:0;clip-path:inset(50% 0 0);background:#15121e;z-index:1}
+.wm-digit wm-flap::before{content:attr(data-glyph)}
+.wm-flap-top{clip-path:inset(0 0 50%);background:#17131f;z-index:3}
+.wm-flap-bottom{clip-path:inset(50% 0 0);background:#15121e;z-index:4}
+#sales-chart,#stock-chart{touch-action:pan-y;cursor:crosshair}
+#sales-chart .cursor,#stock-chart .cursor{stroke:#e5d9ff99;stroke-width:1;stroke-dasharray:3 4;transition:none;pointer-events:none}
+#sales-chart [data-series],#stock-chart [data-series]{pointer-events:none}
+.motion-off .wm-digit::before,.motion-off .wm-digit wm-flap{display:none!important}
+@media(prefers-reduced-motion:reduce){.wm-digit::before,.wm-digit wm-flap{display:none!important}}
+.wm-number-label{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Retain the host's KPI scale, including inside caption-heavy cards. */
+.walmart-page .wm-number,.walmart-page .wm-number :is(span,wm-flap){font:inherit!important;color:inherit!important;letter-spacing:inherit!important;line-height:inherit!important;margin:0!important;padding:0!important;text-transform:none}
+.walmart-page :is(.wm-number,.wm-glyphs,.wm-digit,.wm-punct){display:inline-block!important;gap:0!important;vertical-align:baseline}
+.walmart-page .wm-digit>wm-flap{width:auto;height:auto;border-radius:0}
+/* Text clipped to a parent gradient becomes transparent on 3D flap layers. */
+.walmart-page .wm-revenue-value{background:none;color:#f2eaf7;-webkit-text-fill-color:#f2eaf7}
+
+/* Embedded readouts inherit their table, badge, or caption typography. */
+wm-text{display:inline;font:inherit;letter-spacing:inherit;color:inherit}
+wm-value{display:inline;font:inherit;letter-spacing:inherit;color:inherit;white-space:nowrap;font-variant-numeric:tabular-nums}
+.walmart-page wm-value .wm-number{vertical-align:baseline!important}
